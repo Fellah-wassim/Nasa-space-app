@@ -9,7 +9,15 @@
     />
   </head>
   <body>
-    <div class="text-box"></div>
+    <div class="div-before-box">
+      <!-- <div class="box"> -->
+      <img
+        src="/favpng_airplane-sprite-aircraft-deviantart.png"
+        class="box"
+        alt=""
+      />
+      <!-- </div> -->
+    </div>
 
     <script src="three.min.js"></script>
     <script>
@@ -79,6 +87,37 @@
         requestAnimationFrame(animate);
       }
       init();
+      let moveBy = 30;
+      let box = document.querySelector(".box");
+      window.addEventListener("load", () => {
+        box.style.position = "absolute";
+        box.style.left = "0";
+        box.style.top = "0";
+      });
+      window.addEventListener("keyup", (e) => {
+        switch (e.key) {
+          case "ArrowLeft":
+            if (parseInt(window.getComputedStyle(box).left) > 1) {
+              box.style.left = parseInt(box.style.left) - moveBy + "px";
+            }
+            break;
+          case "ArrowRight":
+            if (parseInt(window.getComputedStyle(box).right) > 1) {
+              box.style.left = parseInt(box.style.left) + moveBy + "px";
+            }
+            break;
+          case "ArrowUp":
+            if (parseInt(window.getComputedStyle(box).top) > 1) {
+              box.style.top = parseInt(box.style.top) - moveBy + "px";
+            }
+            break;
+          case "ArrowDown":
+            if (parseInt(window.getComputedStyle(box).bottom) > 1) {
+              box.style.top = parseInt(box.style.top) + moveBy + "px";
+            }
+            break;
+        }
+      });
     </script>
   </body>
 </html>
